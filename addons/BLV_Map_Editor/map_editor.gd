@@ -16,15 +16,21 @@ func _enter_tree():
 	make_visible(false)
 	
 	#add loaded scene to dock
-	add_control_to_bottom_panel(dock,"MapEditor")
+	add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_UL,dock)
 
 
 func _exit_tree():
 	if main_panel:
 		main_panel.queue_free()
 	
-	remove_control_from_bottom_panel(dock)
-	dock.free()
+	if dock:
+		remove_control_from_docks(dock)
+	#dock.free()
+
+
+func _ready():
+	print("READY")
+	print(get_editor_interface().get_editor_viewport().rect_position)
 
 
 func has_main_screen():
@@ -37,9 +43,9 @@ func make_visible(visible):
 
 
 func get_plugin_name():
-	return "Main Screen Plugin"
+	return "MapEditor"
 
 
 func get_plugin_icon():
 	# Must return some kind of Texture for the icon.
-	return get_editor_interface().get_base_control().get_icon("Node", "EditorIcons")
+	return get_editor_interface().get_base_control().get_icon("TileMap", "EditorIcons")
