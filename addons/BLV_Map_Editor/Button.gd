@@ -19,4 +19,3 @@ func _ready():
 
 func _on_Button_pressed():
 	print("Hello")
-	get_parent().get_node("Popup").popup()
