@@ -10,6 +10,7 @@ config_version=4
 
 _global_script_classes=[  ]
 _global_script_class_icons={
+
 }
 
 [application]
@@ -19,7 +20,7 @@ config/icon="res://icon.png"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/BLV_Map_Editor/plugin.cfg" )
+enabled=PoolStringArray( "BLV_Map_Editor" )
 
 [physics]
 

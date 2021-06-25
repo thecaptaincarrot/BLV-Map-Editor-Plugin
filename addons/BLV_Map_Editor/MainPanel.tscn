@@ -20,10 +20,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer"]
+[node name="PanelContainer" type="Control" parent="ScrollContainer"]
 margin_right = 9999.0
-margin_bottom = 999.0
-rect_min_size = Vector2( 9999, 999 )
+margin_bottom = 9999.0
+rect_min_size = Vector2( 9999, 9999 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -31,7 +31,10 @@ size_flags_vertical = 3
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 9992.0
-margin_bottom = 992.0
+margin_bottom = 9992.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

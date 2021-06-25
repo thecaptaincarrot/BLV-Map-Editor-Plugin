@@ -3,6 +3,8 @@ extends Control
 
 var viewport_position
 
+var grid_offset = Vector2(1,1)
+
 signal tile_selected
 
 
@@ -17,6 +19,9 @@ func _process(delta):
 
 
 func _input(event):
-	if event is InputEventMouseButton and is_visible_in_tree():
-
-		print (get_local_mouse_position() - Vector2(6,4))
+	if event is InputEventMouseButton and is_visible_in_tree() and event.button_index == BUTTON_LEFT and event.pressed:
+		var viewport_position = get_local_mouse_position() - Vector2(6,4) #offset
+		if viewport_position.x < 32 or viewport_position.y < 32:
+			return
+		var grid_position = Vector2(stepify(viewport_position.x,64)/64,stepify(viewport_position.y,64)/64) - grid_offset
+		emit_signal("tile_selected",grid_position)
