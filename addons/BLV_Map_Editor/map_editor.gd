@@ -18,7 +18,9 @@ func _enter_tree():
 	make_visible(false)
 	
 	#add loaded scene to dock
-	add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_UL,Dock)
+	connect("main_screen_changed",self,"_on_main_screen_changed")
+	#add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_UL,Dock)
+	
 
 
 func _exit_tree():
@@ -62,3 +64,11 @@ func get_plugin_icon():
 func select_tile(grid_position : Vector2):
 	print("Selected Map tile: ", grid_position)
 	Dock.new_tile(grid_position)
+
+
+#signals
+func _on_main_screen_changed(main_screen : String):
+	if main_screen == "MapEditor":
+		add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_UL,Dock)
+	else:
+		remove_control_from_docks(Dock)
