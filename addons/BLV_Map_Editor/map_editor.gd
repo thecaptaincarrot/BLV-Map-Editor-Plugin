@@ -3,13 +3,15 @@ extends EditorPlugin
 
 
 const MAINWINDOW = preload("res://addons/BLV_Map_Editor/MainPanel.tscn")
+const DOCK = preload("res://addons/BLV_Map_Editor/MapEditorDock.tscn")
+const POPUP = preload("res://addons/BLV_Map_Editor/LevelCreateDialogue.tscn")
 
 var MainPanel
 var Dock
 
 func _enter_tree():
 	MainPanel = MAINWINDOW.instance()
-	Dock = preload("res://addons/BLV_Map_Editor/MapEditorDock.tscn").instance()
+	Dock = DOCK.instance()
 	# Add the main panel to the editor's main viewport.
 	get_editor_interface().get_editor_viewport().add_child(MainPanel)
 	# Hide the main panel. Very much required.
@@ -32,6 +34,10 @@ func _exit_tree():
 func _ready():
 	print("MAP EDITOR READY")
 	MainPanel.connect("tile_selected",self,"select_tile")
+	#Dock To Panel
+	Dock.connect("ReturnToOrigin",MainPanel,"origin_return")
+	Dock.connect("CreateLevel",MainPanel,"open_level_dialogue")
+	var base = get_editor_interface().get_base_control()
 
 
 func has_main_screen():
