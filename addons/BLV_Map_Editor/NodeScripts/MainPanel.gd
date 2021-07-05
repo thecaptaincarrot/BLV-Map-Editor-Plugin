@@ -8,8 +8,11 @@ var viewport_position
 var panel_offset = Vector2(0,0)
 var grid_offset = Vector2(16,16)
 
+var dock
+
 signal tile_selected
 signal deselect
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,8 +22,9 @@ func _ready():
 	$ScrollContainer/PanelContainer/Xaxis.add_point(Vector2(0,-32 + grid_offset.y * 64))
 	$ScrollContainer/PanelContainer/Xaxis.add_point(Vector2(99 * 64,-32 + grid_offset.y * 64))
 	
-	$ScrollContainer.set_h_scroll(grid_offset.x * 64)
-	$ScrollContainer.set_v_scroll(grid_offset.y * 64)
+	$Popups/WindowDialog.panel_root = self
+	$Popups/WindowDialog.level_container = $ScrollContainer/PanelContainer/LevelContainer
+	$Popups/WindowDialog.offset = grid_offset - Vector2(1,1)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

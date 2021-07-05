@@ -17,8 +17,14 @@ func _enter_tree():
 	# Hide the main panel. Very much required.
 	make_visible(false)
 	
+	MainPanel.dock = Dock
+	Dock.main_screen = MainPanel
+	MainPanel.get_node("Popups/WindowDialog").dock = Dock
+	print("dock check 2: ",MainPanel.get_node("Popups/WindowDialog").dock)
+	
 	#add loaded scene to dock
 	connect("main_screen_changed",self,"_on_main_screen_changed")
+	Dock.connect("EnterLevel",self,"go_to_level")
 	#add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_UL,Dock)
 	
 
@@ -64,6 +70,12 @@ func get_plugin_icon():
 func select_tile(grid_position : Vector2):
 	print("Selected Map tile: ", grid_position)
 	Dock.new_tile(grid_position)
+
+
+func go_to_level(level_path):
+	var editor = get_editor_interface()
+	editor.open_scene_from_path(level_path)
+	editor.set_main_screen_editor("2D")
 
 
 #signals

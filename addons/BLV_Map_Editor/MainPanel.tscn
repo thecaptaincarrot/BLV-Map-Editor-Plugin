@@ -19,14 +19,18 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
+scroll_horizontal = 100
+scroll_vertical = 100
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="PanelContainer" type="Control" parent="ScrollContainer"]
-margin_right = 9999.0
-margin_bottom = 9999.0
+margin_left = -100.0
+margin_top = -100.0
+margin_right = 9899.0
+margin_bottom = 9899.0
 rect_min_size = Vector2( 9999, 9999 )
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -47,11 +51,11 @@ __meta__ = {
 }
 
 [node name="Yaxis" type="Line2D" parent="ScrollContainer/PanelContainer"]
-points = PoolVector2Array( 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336 )
+points = PoolVector2Array( 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336 )
 default_color = Color( 0.12549, 0.12549, 0.12549, 1 )
 
 [node name="Xaxis" type="Line2D" parent="ScrollContainer/PanelContainer"]
-points = PoolVector2Array( 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992 )
+points = PoolVector2Array( 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992 )
 default_color = Color( 0.12549, 0.12549, 0.12549, 1 )
 
 [node name="LevelContainer" type="Control" parent="ScrollContainer/PanelContainer"]
@@ -64,3 +68,8 @@ __meta__ = {
 [node name="Popups" type="CanvasLayer" parent="."]
 
 [node name="WindowDialog" parent="Popups" instance=ExtResource( 3 )]
+visible = true
+margin_left = 256.0
+margin_top = 256.0
+margin_right = 519.0
+margin_bottom = 588.0

@@ -113,6 +113,8 @@ margin_left = 46.0
 margin_right = 109.0
 margin_bottom = 20.0
 text = "None"
+items = [ "None", null, false, 0, null, "City", null, false, 1, null ]
+selected = 0
 
 [node name="LevelNameBox" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 70.0
@@ -138,7 +140,7 @@ margin_bottom = 112.0
 text = "Notes:"
 align = 1
 
-[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
+[node name="Notes" type="TextEdit" parent="VBoxContainer"]
 margin_top = 116.0
 margin_right = 243.0
 margin_bottom = 244.0
@@ -162,3 +164,4 @@ margin_top = 296.0
 margin_right = 243.0
 margin_bottom = 316.0
 text = "Create Recharge Room"
+[connection signal="pressed" from="VBoxContainer/CreateLevel" to="." method="_on_CreateLevel_pressed"]
