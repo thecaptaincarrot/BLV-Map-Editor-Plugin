@@ -19,8 +19,9 @@ var dock
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for biome in biomes:
-		$VBoxContainer/Biome/OptionButton.add_item(biome)
+	$VBoxContainer/Biome/OptionButton.clear()
+	$VBoxContainer/Biome/OptionButton.add_item("None")
+	$VBoxContainer/Biome/OptionButton.add_item("City")
 	
 
 
@@ -46,10 +47,11 @@ func open_menu(grid_position):
 
 func _on_CreateLevel_pressed():
 	var level_size = Vector2($VBoxContainer/LevelSize/XSize.value,$VBoxContainer/LevelSize/YSize.value)
-	var level_biome = $VBoxContainer/Biome/OptionButton.selected
+	var level_biome = $VBoxContainer/Biome/OptionButton.get_item_text($VBoxContainer/Biome/OptionButton.selected) 
 	var level_name = $VBoxContainer/LevelNameBox/LevelName.text
+	var level_code = "Level" + str(grid.x)+"_"+str(grid.y)
 	var level_notes = $VBoxContainer/Notes.text
-	var level_path = LEVELDIRECTORY + level_name + ".tscn"
+	var level_path = LEVELDIRECTORY + level_code + ".tscn"
 	
 	var new_tile = TILE.instance()
 	new_tile.grid_position = grid
@@ -61,6 +63,7 @@ func _on_CreateLevel_pressed():
 	new_tile.offset = offset
 	
 	new_tile.connect("level_selected",dock,"select_level")
+	new_tile.connect("level_selected",panel_root,"select_level")
 	
 	var dir = Directory.new()
 	dir.copy(INHERITEDLEVEL,level_path)

@@ -164,4 +164,5 @@ margin_top = 296.0
 margin_right = 243.0
 margin_bottom = 316.0
 text = "Create Recharge Room"
+
 [connection signal="pressed" from="VBoxContainer/CreateLevel" to="." method="_on_CreateLevel_pressed"]

@@ -1,12 +1,18 @@
 tool
 extends Control
 
+const EXIT = preload("res://World/LevelExit.tscn")
+const EXITMENU = preload("res://addons/BLV_Map_Editor/ExitContainer.tscn")
+
 signal ReturnToOrigin
 signal CreateLevel
 signal EnterLevel
+signal OpenLevel
 
 var selected_tile
 var selected_level = null
+
+var biomes = ["None", "City"]
 
 var main_screen
 
@@ -14,6 +20,9 @@ var main_screen
 func _ready():
 	print("MAP EDITOR DOCK READY")
 	new_tile(Vector2(1,1))
+	
+	for biome in biomes:
+		$PanelContainer/VBoxContainer/LevelStuff/OptionButton.add_item(biome)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,6 +53,7 @@ func select_level(level_node):
 	$PanelContainer/VBoxContainer/LevelStuff.show()
 	selected_tile = level_node.grid_position
 	selected_level = level_node
+	emit_signal("OpenLevel",selected_level.levelpath)
 	
 	$PanelContainer/VBoxContainer/LevelStuff/LevelName.text = level_node.levelname
 	$PanelContainer/VBoxContainer/LevelStuff/GridPositionContainer/GridPosX.value = level_node.grid_position.x
@@ -113,3 +123,15 @@ func _on_Notes_text_changed():
 func _on_EnterLevel_pressed():
 	if selected_level:
 		emit_signal("EnterLevel",selected_level.levelpath)
+
+
+func _on_OptionButton_item_selected(index):
+	if selected_level:
+		selected_level.biome = $PanelContainer/VBoxContainer/LevelStuff/OptionButton.get_item_text(index) 
+		selected_level.update_rect()
+
+
+func _on_NewExitButton_pressed():
+	if selected_level:
+		emit_signal("OpenLevel",selected_level.levelpath)
+		

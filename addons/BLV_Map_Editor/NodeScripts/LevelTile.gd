@@ -42,6 +42,11 @@ func add_exit(grid_position):
 func update_rect():
 	rect_position = Vector2(32 + (grid_position.x + offset.x) * 64, 32 + (grid_position.y + offset.y) * 64)
 	rect_size = grid_size * 64
+	match biome:
+		"None":
+			self_modulate = Color.white
+		"City":
+			self_modulate = Color.paleturquoise
 
 
 func _on_LevelTile_mouse_entered():

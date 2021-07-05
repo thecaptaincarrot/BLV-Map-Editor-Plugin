@@ -58,3 +58,7 @@ func origin_return():
 
 func open_level_dialogue(tile):
 	$Popups/WindowDialog.open_menu(tile)
+
+
+func select_level(_level):
+	emit_signal("deselect")

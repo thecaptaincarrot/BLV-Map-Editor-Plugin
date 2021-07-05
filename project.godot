@@ -10,17 +10,12 @@ config_version=4
 
 _global_script_classes=[  ]
 _global_script_class_icons={
-
 }
 
 [application]
 
 config/name="BLV Plugin Tests"
 config/icon="res://icon.png"
-
-[editor_plugins]
-
-enabled=PoolStringArray( "BLV_Map_Editor" )
 
 [physics]
 

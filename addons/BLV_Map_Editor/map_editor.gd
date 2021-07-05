@@ -25,6 +25,7 @@ func _enter_tree():
 	#add loaded scene to dock
 	connect("main_screen_changed",self,"_on_main_screen_changed")
 	Dock.connect("EnterLevel",self,"go_to_level")
+	Dock.connect("OpenLevel",self,"open_level")
 	#add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_UL,Dock)
 	
 
@@ -76,6 +77,11 @@ func go_to_level(level_path):
 	var editor = get_editor_interface()
 	editor.open_scene_from_path(level_path)
 	editor.set_main_screen_editor("2D")
+
+
+func open_level(level_path):
+	var editor = get_editor_interface()
+	editor.open_scene_from_path(level_path)
 
 
 #signals
